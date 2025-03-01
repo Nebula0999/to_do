@@ -1,0 +1,64 @@
+{% extends 'task/base.html' %}
+{% block content %}
+<div class="container col-md-6 offset-md-3 mx-3">
+    <p class="col-md-6 offset-md-3">Task Manager</p>
+    {%csrf_token%}
+    <form action="POST">
+        <input type="text" name="task" placeholder="Task">
+        <button type="submit" class="btn btn-warning" href="{% url 'task_add' %}">Add</button>
+    </form>
+</div>
+<div class="box col-md-6 offset-md-3 mx-3">
+    <p class="task">Task: {{ tasks.title }}</p>
+</div>
+{% endblock %}
+</div>
+
+<style>
+
+    
+    .task{
+        text-align: center;
+        font-size: 24px;
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        text-emphasis-color: #12b4d9;
+        font-family: Open Sans, sans-serif;
+    }
+    p{
+        text-align: center;
+        font-size: 24px;
+        margin-top: 50px;
+    }
+    form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    input{
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 300px;
+    }
+    button{
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: #ccc;
+    }
+    footer{
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+</style>
+</html>

@@ -1,0 +1,11 @@
+{% extends 'task/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Create a New Task</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+{% endblock %}
