@@ -1,13 +1,23 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Task
+from .forms import Task_form
 from django.views import View
 from django.http import JsonResponse
 
 
 class Index(View):
     def get(self, request):
-        tasks = get_object_or_404(Task)
-        return render(request, 'task/index.html', {'tasks': tasks})
+        tasks = Task.objects.all()
+        form = Task_form()
+        if request.method == 'POST':
+            form = Task_form(request.POST)
+            if form.is_valid():
+                form.save()
+            return redirect('index')
+        
+        context = {'tasks': tasks, 'form': form}
+        return render(request, 'task/index.html', context)
+    
 
 
 def api(request):

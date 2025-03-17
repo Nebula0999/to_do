@@ -2,10 +2,11 @@
 {% block content %}
 <div class="container col-md-6 offset-md-3 mx-3">
     <p class="col-md-6 offset-md-3">Task Manager</p>
-    {%csrf_token%}
-    <form action="POST">
-        <input type="text" name="task" placeholder="Task">
-        <button type="submit" class="btn btn-warning" href="{% url 'task_add' %}">Add</button>
+    <form method="POST" >
+        {% csrf_token %}
+        {{ form.title }}
+        <p>Priority: {{ form.priority }}</p> 
+        <button type="submit" class="btn btn-warning" href="{% url 'index' %}">Add</button>
     </form>
 </div>
 <div class="box col-md-6 offset-md-3 mx-3">
